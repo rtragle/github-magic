@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 import SearchForm from './SearchForm';
-import LookupTable from './LookupTable';
+import UserInfo from './UserInfo';
+import Followers from './Followers';
 
+// TODO: Use react-router
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,10 +31,11 @@ class App extends Component {
         <SearchForm onSearch={this.handleSearch} />
 
         {userName && (
-          <div>
-            <h2>Followers (and their Followers)</h2>
-            <LookupTable userName={userName} />
-          </div>
+          <UserInfo userName={userName} />
+        )}
+
+        {userName && (
+          <Followers userName={userName} />
         )}
       </div>
     );
