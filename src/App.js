@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 
 import SearchForm from './SearchForm';
 import UserInfo from './UserInfo';
@@ -26,9 +26,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Lookup info on Github User</h1>
-
-        <SearchForm onSearch={this.handleSearch} />
+        <nav className="navbar navbar-dark fixed-top bg-dark">
+          <a className="navbar-brand" href="/">GitHub User Lookup</a>
+          <SearchForm onSearch={this.handleSearch} />
+        </nav>
 
         {userName && (
           <UserInfo userName={userName} />

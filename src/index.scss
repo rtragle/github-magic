@@ -1,6 +1,8 @@
+// Import Bootstrap and default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
 body {
-  margin: 0;
-  padding: 0;
+  padding-top: 5rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;

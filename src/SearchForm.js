@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import './SearchForm.css';
-
 class SearchForm extends PureComponent {
   constructor(props) {
     super(props);
@@ -33,10 +31,9 @@ class SearchForm extends PureComponent {
     const { userName } = this.state;
 
     return (
-      <form className="search-form" onSubmit={this.handleSearchClick}>
-        <input className="search-form__input" id="userName" type="text" value={userName} onChange={this.handleUserNameChange} />
-
-        <button type="submit">Lookup</button>
+      <form className="form-inline mt-2 mt-md-0" onSubmit={this.handleSearchClick}>
+        <input className="form-control mr-sm-2" id="userName" type="text" placeholder="Username" value={userName} onChange={this.handleUserNameChange} />
+        <button className="btn btn-outline-success my-2" type="submit">Lookup</button>
       </form>
     );
   }
