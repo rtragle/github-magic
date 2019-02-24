@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router";
 import { Switch, Route, Link } from "react-router-dom";
 
+import NavLinks from "./NavLinks";
 import SearchForm from './SearchForm';
 import UserInfo from './UserInfo';
 import Followers from './Followers';
@@ -19,10 +20,14 @@ class Home extends Component {
   }
 
   render() {
+    const { userName } = this.props.match.params;
+
     return (
       <div className="App">
         <nav className="navbar navbar-dark fixed-top bg-dark">
           <Link className="navbar-brand" to="/">GitHub User Lookup</Link>
+
+          <Route path="/:userName" component={NavLinks} />
           <SearchForm onSearch={this.handleSearch} />
         </nav>
 
