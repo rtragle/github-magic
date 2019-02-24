@@ -24,10 +24,14 @@ class Home extends Component {
 
     return (
       <div className="App">
-        <nav className="navbar navbar-dark fixed-top bg-dark">
+        <nav className="navbar navbar-dark fixed-top bg-dark navbar-expand">
+
           <Link className="navbar-brand" to="/">GitHub User Lookup</Link>
 
-          <Route path="/:userName" component={NavLinks} />
+          <div className="collapse navbar-collapse">
+            <Route path="/:userName" component={NavLinks} />
+          </div>
+
           <SearchForm onSearch={this.handleSearch} />
         </nav>
 
