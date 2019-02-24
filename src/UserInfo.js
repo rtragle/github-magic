@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+
+import { withRouter } from "react-router";
 
 class UserInfo extends PureComponent {
   constructor(props) {
@@ -17,14 +19,16 @@ class UserInfo extends PureComponent {
     this.fetchUserInfo();
   }
 
-  componentDidUpdate({ userName: oldUserName }) {
-    if (this.props.userName !== oldUserName) {
+  componentDidUpdate(prevProps) {
+    const { userName: prevUserName } = prevProps.match.params;
+
+    if (this.props.match.params.userName !== prevUserName) {
       this.fetchUserInfo();
     }
   }
 
   fetchUserInfo() {
-    const { userName } = this.props;
+    const { userName } = this.props.match.params;
 
     this.setState({ isLoadingInfo: true }, () => {
       fetch(`https://api.github.com/users/${userName}`)
@@ -34,7 +38,7 @@ class UserInfo extends PureComponent {
   }
 
   render() {
-    const { userName } = this.props;
+    const { userName } = this.props.match.params;
     const { isLoadingInfo, info } = this.state;
 
     if (isLoadingInfo) {
@@ -51,7 +55,6 @@ class UserInfo extends PureComponent {
 }
 
 UserInfo.propTypes = {
-  userName: PropTypes.string.isRequired
 };
 
-export default UserInfo;
+export default withRouter(UserInfo);
