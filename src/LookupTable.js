@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
+import { withRouter } from "react-router";
+
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
@@ -19,14 +21,16 @@ class LookupTable extends PureComponent {
     this.fetchUser();
   }
 
-  componentDidUpdate({ userName: oldUserName }) {
-    if (this.props.userName !== oldUserName) {
+  componentDidUpdate(prevProps) {
+    const { userName: prevUserName } = prevProps.match.params;
+
+    if (this.props.match.params.userName !== prevUserName) {
       this.fetchUser();
     }
   }
 
   fetchUser() {
-    const { userName } = this.props;
+    const { userName } = this.props.match.params;
 
     fetch(`https://api.github.com/users/${userName}/followers`)
       .then(res => res.json())
@@ -70,4 +74,4 @@ LookupTable.propTypes = {
   userName: PropTypes.string.isRequired
 };
 
-export default LookupTable;
+export default withRouter(LookupTable);
