@@ -20,8 +20,6 @@ class Home extends Component {
   }
 
   render() {
-    const { userName } = this.props.match.params;
-
     return (
       <div className="App">
         <nav className="navbar navbar-dark fixed-top bg-dark navbar-expand">
